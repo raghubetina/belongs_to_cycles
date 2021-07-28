@@ -1,6 +1,8 @@
 class Third < ApplicationRecord
   # Direct associations
 
+  belongs_to :second
+
   # Indirect associations
 
   # Validations

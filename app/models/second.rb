@@ -1,6 +1,9 @@
 class Second < ApplicationRecord
   # Direct associations
 
+  has_many   :thirds,
+             :dependent => :destroy
+
   belongs_to :first
 
   # Indirect associations

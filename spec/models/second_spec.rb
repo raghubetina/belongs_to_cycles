@@ -4,6 +4,8 @@ RSpec.describe Second, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:thirds) }
+
     it { should belong_to(:first) }
 
     end
