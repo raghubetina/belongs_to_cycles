@@ -16,7 +16,7 @@
 
     <%= f.label :third_id %>
     <!-- Input for third_id start -->
-    <%= f.number_field :third_id, class: third_class, placeholder: "Enter third" %>
+    <%= f.collection_select :third_id, Third.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for third_id end -->
     <% if third_was_invalid %>
       <% first.errors.full_messages_for(:third).each do |message| %>
