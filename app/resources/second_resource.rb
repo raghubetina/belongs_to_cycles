@@ -6,6 +6,8 @@ class SecondResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :first
+
   # Indirect associations
 
 end
