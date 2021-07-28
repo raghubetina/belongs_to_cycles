@@ -4,6 +4,8 @@ RSpec.describe First, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:third) }
+
     it { should have_many(:seconds) }
 
     end

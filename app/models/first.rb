@@ -1,6 +1,8 @@
 class First < ApplicationRecord
   # Direct associations
 
+  belongs_to :third
+
   has_many   :seconds,
              :dependent => :destroy
 
