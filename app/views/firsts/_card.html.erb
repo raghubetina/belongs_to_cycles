@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Third</dt>
       <!-- Display third_id start -->
-      <dd><%= first.third_id %></dd>
+      <dd>
+        <% if @first.third.present? %>
+          <%= link_to first.third, first.third %>
+        <% end %>
+      </dd>
       <!-- Display third_id end -->
 
     </dl>
