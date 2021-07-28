@@ -1,12 +1,6 @@
-<!-- Form second start -->
 <%= form_with(model: @second, local: true) do |f| %>
-<!-- Form second end -->
 
-  <!-- Label and input for first_id start -->
-  <!-- Input for first_id start -->
   <%= f.hidden_field :first_id, value: @first.id %>
-  <!-- Input for first_id end -->
-  <!-- Label and input for first_id end -->
 
   <%= f.submit "Create second", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

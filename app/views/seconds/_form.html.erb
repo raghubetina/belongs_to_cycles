@@ -1,7 +1,6 @@
 <% was_validated = second.errors.any? %>
 
 <%= form_with(model: second, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for first_id start -->
   <div class="form-group">
     <% first_class = "form-control" %>
     <% first_was_invalid = second.errors.include?(:first) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :first_id %>
-    <!-- Input for first_id start -->
     <%= f.collection_select :first_id, First.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for first_id end -->
     <% if first_was_invalid %>
       <% second.errors.full_messages_for(:first).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,6 +23,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for first_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

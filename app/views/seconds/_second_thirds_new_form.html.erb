@@ -1,12 +1,6 @@
-<!-- Form third start -->
 <%= form_with(model: @third, local: true) do |f| %>
-<!-- Form third end -->
 
-  <!-- Label and input for second_id start -->
-  <!-- Input for second_id start -->
   <%= f.hidden_field :second_id, value: @second.id %>
-  <!-- Input for second_id end -->
-  <!-- Label and input for second_id end -->
 
   <%= f.submit "Create third", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

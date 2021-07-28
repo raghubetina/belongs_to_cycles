@@ -6,13 +6,11 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>First</dt>
-      <!-- Display first_id start -->
       <dd>
         <% if @second.first.present? %>
           <%= link_to second.first, second.first %>
         <% end %>
       </dd>
-      <!-- Display first_id end -->
 
     </dl>
 
@@ -21,21 +19,17 @@
         <%= link_to_show_or_back second, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link second start -->
       <div class="col">
         <%= link_to edit_second_url(second), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link second end -->
 
-      <!-- Delete link second start -->
       <div class="col">
         <%= link_to second, method: :delete, data: { confirm: "Do you really want to delete this second?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link second end -->
     </div>
   </div>
 
