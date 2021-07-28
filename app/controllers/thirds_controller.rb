@@ -3,7 +3,7 @@ class ThirdsController < ApplicationController
 
   # GET /thirds
   def index
-    @thirds = Third.all
+    @thirds = Third.page(params[:page]).per(10)
   end
 
   # GET /thirds/1

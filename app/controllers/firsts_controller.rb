@@ -3,7 +3,7 @@ class FirstsController < ApplicationController
 
   # GET /firsts
   def index
-    @firsts = First.all
+    @firsts = First.page(params[:page]).per(10)
   end
 
   # GET /firsts/1

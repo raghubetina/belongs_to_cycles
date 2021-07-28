@@ -3,7 +3,7 @@ class SecondsController < ApplicationController
 
   # GET /seconds
   def index
-    @seconds = Second.all
+    @seconds = Second.page(params[:page]).per(10)
   end
 
   # GET /seconds/1
