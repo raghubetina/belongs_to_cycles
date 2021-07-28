@@ -16,7 +16,7 @@
 
     <%= f.label :second_id %>
     <!-- Input for second_id start -->
-    <%= f.number_field :second_id, class: second_class, placeholder: "Enter second" %>
+    <%= f.collection_select :second_id, Second.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for second_id end -->
     <% if second_was_invalid %>
       <% third.errors.full_messages_for(:second).each do |message| %>
