@@ -1,0 +1,31 @@
+<% was_validated = first.errors.any? %>
+
+<%= form_with(model: first, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for third_id start -->
+  <div class="form-group">
+    <% third_class = "form-control" %>
+    <% third_was_invalid = first.errors.include?(:third) %>
+
+    <% if was_validated %>
+      <% if third_was_invalid %>
+        <% third_class << " is-invalid" %>
+      <% else %>
+        <% third_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :third_id %>
+    <!-- Input for third_id start -->
+    <%= f.number_field :third_id, class: third_class, placeholder: "Enter third" %>
+    <!-- Input for third_id end -->
+    <% if third_was_invalid %>
+      <% first.errors.full_messages_for(:third).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for third_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
