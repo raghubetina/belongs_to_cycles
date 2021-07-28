@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe SecondResource, type: :resource do
-  describe 'creating' do
+  describe "creating" do
     let(:payload) do
       {
         data: {
-          type: 'seconds',
-          attributes: { }
-        }
+          type: "seconds",
+          attributes: {},
+        },
       }
     end
 
@@ -15,23 +15,24 @@ RSpec.describe SecondResource, type: :resource do
       SecondResource.build(payload)
     end
 
-    it 'works' do
-      expect {
-        expect(instance.save).to eq(true), instance.errors.full_messages.to_sentence
-      }.to change { Second.count }.by(1)
+    it "works" do
+      expect do
+        expect(instance.save).to eq(true),
+                                 instance.errors.full_messages.to_sentence
+      end.to change { Second.count }.by(1)
     end
   end
 
-  describe 'updating' do
+  describe "updating" do
     let!(:second) { create(:second) }
 
     let(:payload) do
       {
         data: {
           id: second.id.to_s,
-          type: 'seconds',
-          attributes: { } # Todo!
-        }
+          type: "seconds",
+          attributes: {}, # Todo!
+        },
       }
     end
 
@@ -39,25 +40,25 @@ RSpec.describe SecondResource, type: :resource do
       SecondResource.find(payload)
     end
 
-    xit 'works (add some attributes and enable this spec)' do
-      expect {
+    xit "works (add some attributes and enable this spec)" do
+      expect do
         expect(instance.update_attributes).to eq(true)
-      }.to change { second.reload.updated_at }
+      end.to change { second.reload.updated_at }
       # .and change { second.foo }.to('bar') <- example
     end
   end
 
-  describe 'destroying' do
+  describe "destroying" do
     let!(:second) { create(:second) }
 
     let(:instance) do
       SecondResource.find(id: second.id)
     end
 
-    it 'works' do
-      expect {
+    it "works" do
+      expect do
         expect(instance.destroy).to eq(true)
-      }.to change { Second.count }.by(-1)
+      end.to change { Second.count }.by(-1)
     end
   end
 end

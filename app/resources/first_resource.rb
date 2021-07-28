@@ -11,5 +11,4 @@ class FirstResource < ApplicationResource
   has_many   :seconds
 
   # Indirect associations
-
 end

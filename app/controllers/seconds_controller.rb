@@ -1,10 +1,11 @@
 class SecondsController < ApplicationController
-  before_action :set_second, only: [:show, :edit, :update, :destroy]
+  before_action :set_second, only: %i[show edit update destroy]
 
   # GET /seconds
   def index
     @q = Second.ransack(params[:q])
-    @seconds = @q.result(:distinct => true).includes(:first, :thirds).page(params[:page]).per(10)
+    @seconds = @q.result(distinct: true).includes(:first,
+                                                  :thirds).page(params[:page]).per(10)
   end
 
   # GET /seconds/1
@@ -18,17 +19,16 @@ class SecondsController < ApplicationController
   end
 
   # GET /seconds/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /seconds
   def create
     @second = Second.new(second_params)
 
     if @second.save
-      message = 'Second was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Second was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @second, notice: message
       end
@@ -40,7 +40,7 @@ class SecondsController < ApplicationController
   # PATCH/PUT /seconds/1
   def update
     if @second.update(second_params)
-      redirect_to @second, notice: 'Second was successfully updated.'
+      redirect_to @second, notice: "Second was successfully updated."
     else
       render :edit
     end
@@ -50,22 +50,22 @@ class SecondsController < ApplicationController
   def destroy
     @second.destroy
     message = "Second was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to seconds_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_second
-      @second = Second.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def second_params
-      params.require(:second).permit(:first_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_second
+    @second = Second.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def second_params
+    params.require(:second).permit(:first_id)
+  end
 end

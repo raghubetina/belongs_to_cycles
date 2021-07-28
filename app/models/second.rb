@@ -2,7 +2,7 @@ class Second < ApplicationRecord
   # Direct associations
 
   has_many   :thirds,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :first
 
@@ -15,5 +15,4 @@ class Second < ApplicationRecord
   def to_s
     first.to_s
   end
-
 end

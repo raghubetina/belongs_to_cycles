@@ -4,7 +4,7 @@ class First < ApplicationRecord
   belongs_to :third
 
   has_many   :seconds,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
@@ -15,5 +15,4 @@ class First < ApplicationRecord
   def to_s
     third.to_s
   end
-
 end

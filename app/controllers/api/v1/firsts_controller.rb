@@ -13,7 +13,7 @@ class Api::V1::FirstsController < Api::V1::GraphitiController
     first = FirstResource.build(params)
 
     if first.save
-      render jsonapi: first, status: 201
+      render jsonapi: first, status: :created
     else
       render jsonapi_errors: first
     end
@@ -33,7 +33,7 @@ class Api::V1::FirstsController < Api::V1::GraphitiController
     first = FirstResource.find(params)
 
     if first.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: first
     end

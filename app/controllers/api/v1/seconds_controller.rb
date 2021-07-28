@@ -13,7 +13,7 @@ class Api::V1::SecondsController < Api::V1::GraphitiController
     second = SecondResource.build(params)
 
     if second.save
-      render jsonapi: second, status: 201
+      render jsonapi: second, status: :created
     else
       render jsonapi_errors: second
     end
@@ -33,7 +33,7 @@ class Api::V1::SecondsController < Api::V1::GraphitiController
     second = SecondResource.find(params)
 
     if second.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: second
     end

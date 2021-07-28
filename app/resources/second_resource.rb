@@ -11,5 +11,4 @@ class SecondResource < ApplicationResource
   belongs_to :first
 
   # Indirect associations
-
 end

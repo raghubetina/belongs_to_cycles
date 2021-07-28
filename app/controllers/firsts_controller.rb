@@ -1,10 +1,11 @@
 class FirstsController < ApplicationController
-  before_action :set_first, only: [:show, :edit, :update, :destroy]
+  before_action :set_first, only: %i[show edit update destroy]
 
   # GET /firsts
   def index
     @q = First.ransack(params[:q])
-    @firsts = @q.result(:distinct => true).includes(:seconds, :third).page(params[:page]).per(10)
+    @firsts = @q.result(distinct: true).includes(:seconds,
+                                                 :third).page(params[:page]).per(10)
   end
 
   # GET /firsts/1
@@ -18,17 +19,16 @@ class FirstsController < ApplicationController
   end
 
   # GET /firsts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /firsts
   def create
     @first = First.new(first_params)
 
     if @first.save
-      message = 'First was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "First was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @first, notice: message
       end
@@ -40,7 +40,7 @@ class FirstsController < ApplicationController
   # PATCH/PUT /firsts/1
   def update
     if @first.update(first_params)
-      redirect_to @first, notice: 'First was successfully updated.'
+      redirect_to @first, notice: "First was successfully updated."
     else
       render :edit
     end
@@ -50,22 +50,22 @@ class FirstsController < ApplicationController
   def destroy
     @first.destroy
     message = "First was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to firsts_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_first
-      @first = First.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def first_params
-      params.require(:first).permit(:third_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_first
+    @first = First.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def first_params
+    params.require(:first).permit(:third_id)
+  end
 end
