@@ -1,6 +1,8 @@
 class Second < ApplicationRecord
   # Direct associations
 
+  belongs_to :first
+
   # Indirect associations
 
   # Validations
