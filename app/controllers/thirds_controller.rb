@@ -3,7 +3,8 @@ class ThirdsController < ApplicationController
 
   # GET /thirds
   def index
-    @thirds = Third.page(params[:page]).per(10)
+    @q = Third.ransack(params[:q])
+    @thirds = @q.result(:distinct => true).includes(:second, :firsts).page(params[:page]).per(10)
   end
 
   # GET /thirds/1
