@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Firsts
+
+    <a data-toggle="collapse" href="#third_firsts_new_form">
+      Add first
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @third.firsts.each do |first| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to first, first_path(first) %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to first, method: :delete, data: { confirm: "Do you really want to delete this first" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="third_firsts_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

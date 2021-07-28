@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Seconds
+
+    <a data-toggle="collapse" href="#first_seconds_new_form">
+      Add second
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @first.seconds.each do |second| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to second, second_path(second) %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to second, method: :delete, data: { confirm: "Do you really want to delete this second" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="first_seconds_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

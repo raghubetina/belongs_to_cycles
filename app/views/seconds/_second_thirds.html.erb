@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Thirds
+
+    <a data-toggle="collapse" href="#second_thirds_new_form">
+      Add third
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @second.thirds.each do |third| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to third, third_path(third) %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to third, method: :delete, data: { confirm: "Do you really want to delete this third" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="second_thirds_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>
