@@ -8,6 +8,7 @@ class FirstsController < ApplicationController
 
   # GET /firsts/1
   def show
+    @second = Second.new
   end
 
   # GET /firsts/new
@@ -24,7 +25,12 @@ class FirstsController < ApplicationController
     @first = First.new(first_params)
 
     if @first.save
-      redirect_to @first, notice: 'First was successfully created.'
+      message = 'First was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @first, notice: message
+      end
     else
       render :new
     end

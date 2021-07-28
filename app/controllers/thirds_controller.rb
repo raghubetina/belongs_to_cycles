@@ -8,6 +8,7 @@ class ThirdsController < ApplicationController
 
   # GET /thirds/1
   def show
+    @first = First.new
   end
 
   # GET /thirds/new
@@ -24,7 +25,12 @@ class ThirdsController < ApplicationController
     @third = Third.new(third_params)
 
     if @third.save
-      redirect_to @third, notice: 'Third was successfully created.'
+      message = 'Third was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @third, notice: message
+      end
     else
       render :new
     end
