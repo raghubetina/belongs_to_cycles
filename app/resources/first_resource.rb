@@ -6,6 +6,8 @@ class FirstResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :third
+
   has_many   :seconds
 
   # Indirect associations

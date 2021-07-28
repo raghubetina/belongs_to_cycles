@@ -6,6 +6,8 @@ class ThirdResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :firsts
+
   belongs_to :second
 
   # Indirect associations
